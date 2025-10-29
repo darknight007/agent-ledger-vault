@@ -19,7 +19,7 @@ export const Pricing = () => {
     name: "Growth",
     description: "Meter usage, bill clients, audit outcomes",
     idealFor: "Startups & AI Service Providers",
-    price: "$99",
+    price: "$999",
     period: "month",
     featured: true,
     features: ["Unlimited agents", "Advanced analytics", "Client billing", "Priority support", "Custom integrations"]
@@ -30,13 +30,6 @@ export const Pricing = () => {
     price: "Custom",
     period: "pricing",
     features: ["Everything in Growth", "CFO dashboard", "Custom billing rules", "Dedicated support", "SLA guarantees", "White-label options"]
-  }, {
-    name: "Platform API",
-    description: "White-label token settlement rails",
-    idealFor: "Infra Providers",
-    price: "Usage",
-    period: "based",
-    features: ["API-first architecture", "White-label platform", "Transaction fee model", "Custom integrations", "Developer support"]
   }];
   return <section className="py-20 px-4">
       <div className="container mx-auto max-w-7xl">
@@ -49,7 +42,7 @@ export const Pricing = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {tiers.map((tier, index) => <Card key={index} className={`p-6 hover:shadow-xl transition-all ${tier.featured ? 'border-accent border-2 animate-glow' : ''}`}>
               <div className="mb-6">
                 <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>

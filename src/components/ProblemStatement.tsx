@@ -7,7 +7,7 @@ export const ProblemStatement = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            AI agents deliver outcomes — but finance still treats them like software seats.
+            AI delivers outcomes. Charge them accordingly
           </h2>
         </div>
         

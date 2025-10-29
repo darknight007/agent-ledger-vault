@@ -18,10 +18,10 @@ export const ForBuilders = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Price your agents like a <span className="text-[hsl(158,96%,61%)]">product</span>, not a project.
             </h2>
-            <p className="text-xl text-white/80 mb-8 leading-relaxed">
+            <p className="text-xl text-white/90 mb-8 leading-relaxed">
               We help builders turn AI workflows into monetizable, outcome-based services.
             </p>
             <div className="space-y-4 mb-8">

@@ -7,7 +7,7 @@ export const Navigation = () => {
 
   const navItems = [
     { label: "Solution", href: "#solution" },
-    { label: "For Builders", href: "#builders" },
+    { label: "For AI Builders", href: "#builders" },
     { label: "For CFOs", href: "#enterprises" },
     { label: "Pricing", href: "#pricing" }
   ];

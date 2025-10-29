@@ -1,0 +1,69 @@
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2 } from "lucide-react";
+
+export const ForBuilders = () => {
+  const features = [
+    "Token metering for every agent call",
+    "Outcome mapping (lead, sale, KYC pass)",
+    "Automated invoicing & margin analytics"
+  ];
+
+  return (
+    <section className="py-20 px-4 bg-muted/30">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Price your agents like a <span className="gradient-text">product</span>, not a project.
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              We help builders turn AI workflows into monetizable, outcome-based services.
+            </p>
+            <div className="space-y-4 mb-8">
+              {features.map((feature, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <CheckCircle2 className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
+                  <span className="text-lg">{feature}</span>
+                </div>
+              ))}
+            </div>
+            <Button size="lg" className="text-lg">
+              Get Early Access
+            </Button>
+          </div>
+          
+          <Card className="p-8 hover:shadow-xl transition-all">
+            <div className="space-y-6">
+              <div className="pb-4 border-b border-border">
+                <h4 className="text-sm text-muted-foreground mb-2">Agent Performance</h4>
+                <div className="flex items-end gap-2">
+                  <span className="text-4xl font-bold">$29.6K</span>
+                  <span className="text-accent text-lg mb-1">+142%</span>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">Token Usage</p>
+                  <p className="text-2xl font-bold">847K</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">Cost/Action</p>
+                  <p className="text-2xl font-bold">$0.35</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">Margin</p>
+                  <p className="text-2xl font-bold text-accent">85%</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">Uptime</p>
+                  <p className="text-2xl font-bold">99.8%</p>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+};

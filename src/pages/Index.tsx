@@ -1,12 +1,40 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Navigation } from "@/components/Navigation";
+import { Hero } from "@/components/Hero";
+import { ProblemStatement } from "@/components/ProblemStatement";
+import { SolutionOverview } from "@/components/SolutionOverview";
+import { ForBuilders } from "@/components/ForBuilders";
+import { ForEnterprises } from "@/components/ForEnterprises";
+import { TokenTelemetry } from "@/components/TokenTelemetry";
+import { Pricing } from "@/components/Pricing";
+import { FinalCTA } from "@/components/FinalCTA";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Navigation />
+      <main className="pt-16">
+        <Hero />
+        <ProblemStatement />
+        <section id="solution">
+          <SolutionOverview />
+        </section>
+        <section id="builders">
+          <ForBuilders />
+        </section>
+        <section id="enterprises">
+          <ForEnterprises />
+        </section>
+        <TokenTelemetry />
+        <section id="pricing">
+          <Pricing />
+        </section>
+        <FinalCTA />
+      </main>
+      <footer className="py-8 px-4 border-t border-border">
+        <div className="container mx-auto text-center text-sm text-muted-foreground">
+          <p>© 2025 AgentFi. Monetary Middleware for AI Work.</p>
+        </div>
+      </footer>
     </div>
   );
 };

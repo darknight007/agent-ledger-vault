@@ -19,7 +19,7 @@ export const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold gradient-text">AgentFi</h1>
+            <h1 className="text-2xl font-bold gradient-text">AskScrooge</h1>
           </div>
           
           <div className="hidden md:flex items-center gap-8">

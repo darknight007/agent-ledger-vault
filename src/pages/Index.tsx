@@ -32,7 +32,7 @@ const Index = () => {
       </main>
       <footer className="py-8 px-4 border-t border-border">
         <div className="container mx-auto text-center text-sm text-muted-foreground">
-          <p>© 2025 AgentFi. Monetary Middleware for AI Work.</p>
+          <p>© 2025 AskScrooge. Monetary Middleware for AI Work.</p>
         </div>
       </footer>
     </div>

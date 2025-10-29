@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { DollarSign, FileText, BarChart3 } from "lucide-react";
+import { WaitlistDialog } from "./WaitlistDialog";
 
 export const SolutionOverview = () => {
+  const [showWaitlist, setShowWaitlist] = useState(false);
   const features = [
     {
       icon: DollarSign,
@@ -47,10 +50,11 @@ export const SolutionOverview = () => {
         </div>
         
         <div className="text-center">
-          <Button size="lg" className="text-lg">
+          <Button size="lg" className="text-lg" onClick={() => setShowWaitlist(true)}>
             Explore Pricing Engine
           </Button>
         </div>
+        <WaitlistDialog open={showWaitlist} onOpenChange={setShowWaitlist} />
       </div>
     </section>
   );

@@ -4,7 +4,6 @@ import { ProblemStatement } from "@/components/ProblemStatement";
 import { SolutionOverview } from "@/components/SolutionOverview";
 import { ForBuilders } from "@/components/ForBuilders";
 import { ForEnterprises } from "@/components/ForEnterprises";
-import { TokenTelemetry } from "@/components/TokenTelemetry";
 import { Pricing } from "@/components/Pricing";
 import { FinalCTA } from "@/components/FinalCTA";
 
@@ -24,7 +23,6 @@ const Index = () => {
         <section id="enterprises">
           <ForEnterprises />
         </section>
-        <TokenTelemetry />
         <section id="pricing">
           <Pricing />
         </section>

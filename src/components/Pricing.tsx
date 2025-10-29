@@ -49,7 +49,7 @@ export const Pricing = () => {
                 <p className="text-sm text-muted-foreground mb-4">{tier.description}</p>
                 <div className="mb-2">
                   <span className="text-4xl font-bold">{tier.price}</span>
-                  
+                  {tier.period && tier.price !== "Custom" && <span className="text-lg text-muted-foreground">/{tier.period}</span>}
                 </div>
                 <p className="text-sm text-accent font-medium">{tier.idealFor}</p>
               </div>

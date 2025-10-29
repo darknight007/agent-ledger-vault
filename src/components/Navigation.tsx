@@ -8,7 +8,7 @@ export const Navigation = () => {
   const navItems = [
     { label: "Solution", href: "#solution" },
     { label: "For AI Builders", href: "#builders" },
-    { label: "For CFOs", href: "#enterprises" },
+    { label: "For AI Buyers", href: "#enterprises" },
     { label: "Pricing", href: "#pricing" }
   ];
 

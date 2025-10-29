@@ -1,7 +1,13 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { WaitlistDialog } from "./WaitlistDialog";
+
 export const Pricing = () => {
+  const [showWaitlist, setShowWaitlist] = useState(false);
+  const calendlyUrl = "https://calendly.com/cfoscrooge/30min";
+  
   const tiers = [{
     name: "Builder Free",
     description: "Track up to 3 agents",
@@ -62,11 +68,22 @@ export const Pricing = () => {
                   </li>)}
               </ul>
               
-              <Button className="w-full" variant={tier.featured ? "default" : "outline"}>
-                {tier.price === "Custom" || tier.price === "Usage" ? "Talk to Sales" : "Join Beta"}
+              <Button 
+                className="w-full" 
+                variant={tier.featured ? "default" : "outline"}
+                onClick={() => {
+                  if (tier.price === "Custom" || tier.price === "Usage") {
+                    window.open(calendlyUrl, '_blank');
+                  } else {
+                    setShowWaitlist(true);
+                  }
+                }}
+              >
+                {tier.price === "Custom" || tier.price === "Usage" ? "Talk to Us" : "Join Beta"}
               </Button>
             </Card>)}
         </div>
+        <WaitlistDialog open={showWaitlist} onOpenChange={setShowWaitlist} />
       </div>
     </section>;
 };

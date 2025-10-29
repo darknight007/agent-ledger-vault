@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 
 export const ForEnterprises = () => {
+  const calendlyUrl = "https://calendly.com/cfoscrooge/30min";
+  
   const features = [
     "Budget by outcome, not seat count",
     "Forecast ROI and compliance per department",
@@ -60,8 +62,13 @@ export const ForEnterprises = () => {
                 </div>
               ))}
             </div>
-            <Button size="lg" variant="outline-to-green" className="text-lg">
-              See CFO Dashboard
+            <Button 
+              size="lg" 
+              variant="outline-to-green" 
+              className="text-lg"
+              onClick={() => window.open(calendlyUrl, '_blank')}
+            >
+              Request Demo
             </Button>
           </div>
         </div>

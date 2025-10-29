@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import { WaitlistDialog } from "./WaitlistDialog";
 
 export const ForBuilders = () => {
+  const [showWaitlist, setShowWaitlist] = useState(false);
+  
   const features = [
     "Token metering for every agent call",
     "Outcome mapping (lead, sale, KYC pass)",
@@ -28,9 +32,10 @@ export const ForBuilders = () => {
                 </div>
               ))}
             </div>
-            <Button size="lg" variant="solid-green" className="text-lg">
+            <Button size="lg" variant="solid-green" className="text-lg" onClick={() => setShowWaitlist(true)}>
               Get Early Access
             </Button>
+            <WaitlistDialog open={showWaitlist} onOpenChange={setShowWaitlist} />
           </div>
           
           <Card className="p-8 hover:shadow-xl transition-all bg-white">

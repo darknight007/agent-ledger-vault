@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { WaitlistDialog } from "./WaitlistDialog";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showWaitlist, setShowWaitlist] = useState(false);
 
   const navItems = [
     { label: "Solution", href: "#solution" },
@@ -30,7 +32,7 @@ export const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <Button size="sm">Get Started</Button>
+            <Button size="sm" onClick={() => setShowWaitlist(true)}>Join Today</Button>
           </div>
           
           <button
@@ -55,11 +57,12 @@ export const Navigation = () => {
                   {item.label}
                 </a>
               ))}
-              <Button size="sm" className="w-full">Get Started</Button>
+              <Button size="sm" className="w-full" onClick={() => setShowWaitlist(true)}>Join Today</Button>
             </div>
           </div>
         )}
       </div>
+      <WaitlistDialog open={showWaitlist} onOpenChange={setShowWaitlist} />
     </nav>
   );
 };

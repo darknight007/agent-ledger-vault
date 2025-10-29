@@ -10,30 +10,30 @@ export const ForBuilders = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-muted/30">
+    <section className="py-20 px-4 bg-[hsl(222,65%,18%)]">
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Price your agents like a <span className="gradient-text">product</span>, not a project.
+              Price your agents like a <span className="text-[hsl(158,96%,61%)]">product</span>, not a project.
             </h2>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-xl text-white/80 mb-8 leading-relaxed">
               We help builders turn AI workflows into monetizable, outcome-based services.
             </p>
             <div className="space-y-4 mb-8">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
-                  <span className="text-lg">{feature}</span>
+                  <CheckCircle2 className="h-6 w-6 text-[hsl(158,96%,61%)] mt-1 flex-shrink-0" />
+                  <span className="text-lg text-white">{feature}</span>
                 </div>
               ))}
             </div>
-            <Button size="lg" className="text-lg">
+            <Button size="lg" variant="solid-green" className="text-lg">
               Get Early Access
             </Button>
           </div>
           
-          <Card className="p-8 hover:shadow-xl transition-all">
+          <Card className="p-8 hover:shadow-xl transition-all bg-white">
             <div className="space-y-6">
               <div className="pb-4 border-b border-border">
                 <h4 className="text-sm text-muted-foreground mb-2">Agent Performance</h4>

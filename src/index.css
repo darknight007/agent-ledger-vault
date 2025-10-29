@@ -43,6 +43,9 @@ All colors MUST be HSL.
     --navy-light: 220 50% 25%;
     --electric-green: 158 64% 52%;
     --electric-green-dark: 158 64% 42%;
+    --dark-navy: 222 65% 18%;
+    --neon-green: 158 96% 61%;
+    --light-gray: 210 20% 98%;
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(220 70% 15%), hsl(220 50% 25%));

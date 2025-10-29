@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { ProblemStatement } from "@/components/ProblemStatement";
 import { SolutionOverview } from "@/components/SolutionOverview";
 import { ForBuilders } from "@/components/ForBuilders";
+import { DiagonalDivider } from "@/components/DiagonalDivider";
 import { ForEnterprises } from "@/components/ForEnterprises";
 import { Pricing } from "@/components/Pricing";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -20,6 +21,7 @@ const Index = () => {
         <section id="builders">
           <ForBuilders />
         </section>
+        <DiagonalDivider />
         <section id="enterprises">
           <ForEnterprises />
         </section>

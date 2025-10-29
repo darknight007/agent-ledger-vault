@@ -10,10 +10,10 @@ export const ForEnterprises = () => {
   ];
 
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4 bg-[hsl(210,20%,98%)]">
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <Card className="p-8 hover:shadow-xl transition-all order-2 md:order-1">
+          <Card className="p-8 hover:shadow-xl transition-all order-2 md:order-1 bg-white">
             <div className="space-y-6">
               <div>
                 <h4 className="text-sm text-muted-foreground mb-2">Department: Customer Support</h4>
@@ -47,20 +47,20 @@ export const ForEnterprises = () => {
           
           <div className="animate-fade-in order-1 md:order-2">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Bring AI spend under <span className="gradient-text">control</span> — and tie it to real results.
+              Bring AI spend under <span className="text-[hsl(222,65%,18%)]">control</span> — and tie it to real results.
             </h2>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-xl text-[hsl(222,65%,18%)]/70 mb-8 leading-relaxed">
               We help CFOs and finance teams budget AI with precision.
             </p>
             <div className="space-y-4 mb-8">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
-                  <span className="text-lg">{feature}</span>
+                  <CheckCircle2 className="h-6 w-6 text-[hsl(158,96%,61%)] mt-1 flex-shrink-0" />
+                  <span className="text-lg text-[hsl(222,65%,18%)]">{feature}</span>
                 </div>
               ))}
             </div>
-            <Button size="lg" className="text-lg">
+            <Button size="lg" variant="outline-to-green" className="text-lg">
               See CFO Dashboard
             </Button>
           </div>

@@ -29,7 +29,7 @@ export const FinalCTA = () => {
               className="text-lg group"
               onClick={() => window.open(calendlyUrl, '_blank')}
             >
-              For Enterprises → Request Demo
+              For AI Buyers →
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>

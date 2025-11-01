@@ -20,7 +20,7 @@ export const FinalCTA = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-lg group" onClick={() => setShowWaitlist(true)}>
-              For Builders → Get Early Access
+              For Builders
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button 

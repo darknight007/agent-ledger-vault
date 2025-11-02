@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn } from "lucide-react";
 import { WaitlistDialog } from "./WaitlistDialog";
 
 export const Navigation = () => {
@@ -33,6 +34,12 @@ export const Navigation = () => {
               </a>
             ))}
             <Button size="sm" onClick={() => setShowWaitlist(true)}>Join Today</Button>
+            <Link to="/auth">
+              <Button variant="outline" size="sm">
+                <LogIn className="mr-2 h-4 w-4" />
+                Admin
+              </Button>
+            </Link>
           </div>
           
           <button
@@ -58,6 +65,12 @@ export const Navigation = () => {
                 </a>
               ))}
               <Button size="sm" className="w-full" onClick={() => setShowWaitlist(true)}>Join Today</Button>
+              <Link to="/auth" onClick={() => setIsOpen(false)}>
+                <Button variant="outline" size="sm" className="w-full">
+                  <LogIn className="mr-2 h-4 w-4" />
+                  Admin
+                </Button>
+              </Link>
             </div>
           </div>
         )}

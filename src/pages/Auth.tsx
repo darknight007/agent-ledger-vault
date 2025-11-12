@@ -124,8 +124,8 @@ export default function Auth() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-subtle p-4">
       <Card className="w-full max-w-md">
-        <CardHeader className="space-y-3 py-8">
-          <CardTitle className="text-2xl gradient-text text-center py-2">AskScrooge</CardTitle>
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl gradient-text text-center">AskScrooge</CardTitle>
           <CardDescription className="text-center">
             Sign in to access the admin dashboard
           </CardDescription>

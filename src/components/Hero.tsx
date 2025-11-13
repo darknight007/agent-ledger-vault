@@ -8,7 +8,7 @@ export const Hero = () => {
   const [showWaitlist, setShowWaitlist] = useState(false);
   
   return (
-    <section className="relative min-h-screen flex items-center py-20 px-4 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pb-20 pt-2 md:pt-4 px-4 overflow-hidden">
       <div className="absolute inset-0 gradient-accent opacity-5"></div>
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

@@ -2,7 +2,7 @@ import { Info } from "lucide-react";
 
 export const Announcement = () => {
   return (
-    <div className="bg-secondary/10 py-4 px-4 md:px-6 md:py-5 pt-16">
+    <div className="bg-secondary/10 pt-20 pb-4 px-4 md:px-6 md:pb-5">
       <div className="container mx-auto max-w-6xl">
         <div className="flex items-start gap-3 md:gap-4">
           <Info className="h-5 w-5 text-secondary flex-shrink-0 mt-1" />

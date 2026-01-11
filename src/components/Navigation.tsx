@@ -20,9 +20,11 @@ export const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold gradient-text">AskScrooge</h1>
+            <Link to="/" className="no-underline">
+              <h1 className="text-2xl font-bold gradient-text">AskScrooge</h1>
+            </Link>
           </div>
-          
+
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <a
@@ -35,7 +37,7 @@ export const Navigation = () => {
             ))}
             <Button size="sm" onClick={() => setShowWaitlist(true)}>Join Today</Button>
           </div>
-          
+
           <button
             className="md:hidden"
             onClick={() => setIsOpen(!isOpen)}
@@ -44,7 +46,7 @@ export const Navigation = () => {
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
-        
+
         {isOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">

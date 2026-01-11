@@ -1,22 +1,8 @@
-# Welcome to your Lovable project
+# AskScrooge – Monetary Middleware for AI Work
 
-## Project info
+A platform for pricing, transacting, and auditing AI-agent services.
 
-**URL**: https://lovable.dev/projects/e527f302-f404-4452-bb02-4d92120d08fb
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/e527f302-f404-4452-bb02-4d92120d08fb) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Getting Started
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -36,19 +22,13 @@ npm i
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Editing Files
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+You can edit files using:
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **Your preferred IDE** - Clone the repo and push changes
+- **GitHub** - Navigate to the file, click the "Edit" button, make changes and commit
+- **GitHub Codespaces** - Click "Code" → "Codespaces" → "New codespace" to edit online
 
 ## What technologies are used for this project?
 
@@ -60,14 +40,6 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/e527f302-f404-4452-bb02-4d92120d08fb) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+To deploy this project, use your preferred hosting platform (Vercel, Netlify, etc.).

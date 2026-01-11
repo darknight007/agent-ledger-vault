@@ -1,4 +1,5 @@
 import { Info } from "lucide-react";
+import { PricingBlueprintsPreview } from "./PricingBlueprintsPreview";
 
 interface AnnouncementProps {
   pricingBlueprintsLink?: string;
@@ -6,7 +7,7 @@ interface AnnouncementProps {
 }
 
 export const Announcement = ({
-  pricingBlueprintsLink = "/pricing-blueprints",
+  pricingBlueprintsLink = "#pricing-blueprints",
   signupLink = "https://forms.gle/SUZae3rce4CcYdCS9"
 }: AnnouncementProps) => {
   return (

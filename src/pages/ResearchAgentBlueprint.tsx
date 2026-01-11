@@ -20,7 +20,7 @@ const ResearchAgentBlueprint = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* SECTION 1: HERO */}
       <section className="relative pt-24 pb-16 px-4 overflow-hidden">
         <div className="absolute inset-0 gradient-accent opacity-5"></div>
@@ -269,8 +269,8 @@ const ResearchAgentBlueprint = () => {
               AskScrooge.ai
             </Link>
             <div className="flex items-center gap-6 text-sm">
-              <Link to="/pricing-blueprints/research-agent" className="text-muted-foreground hover:text-foreground transition-colors">
-                Pricing Blueprints
+              <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
+                App
               </Link>
               <span className="text-muted-foreground/40">|</span>
               <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">

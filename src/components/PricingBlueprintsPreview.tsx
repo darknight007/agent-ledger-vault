@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { WaitlistDialog } from "./WaitlistDialog";
 interface BlueprintCard {
   title: string;
   subtitle: string;
@@ -18,7 +20,7 @@ const blueprints: BlueprintCard[] = [
     title: "Research Agent",
     subtitle: "Pricing Blueprint",
     pricingModels: "Per-output · Per-seat · Hybrid",
-    unitOfValue: "1 agent run = 1 task",
+    unitOfValue: "1 agent run = 1 research task",
     geography: "USD · EUR · INR",
     link: "/pricing-blueprints/research-agent",
   },
@@ -49,40 +51,51 @@ const blueprints: BlueprintCard[] = [
 ];
 
 export const PricingBlueprintsPreview = () => {
-  return (
-    <section className="py-16 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-        <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16 items-start">
-          {/* Left Column - Context */}
-          <div className="space-y-6">
-            <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground">
-              Pricing Blueprint Collection
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-              Ready-to-use pricing models for AI agents
-            </h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Explore how real AI agents are priced across geographies, customer types, and pricing models.
-              </p>
-              <p>
-                Clone, compare, and adapt pricing logic — no guesswork.
-              </p>
-            </div>
-            <Button asChild size="lg" className="mt-2">
-              <Link to="/pricing-blueprints">
-                Explore Pricing Blueprints
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
+  const [showWaitlist, setShowWaitlist] = useState(false);
 
-          {/* Right Column - Blueprint Cards */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {blueprints.map((blueprint, index) => (
-              <BlueprintPreviewCard key={index} {...blueprint} />
-            ))}
+  return (
+    <section id="pricing-blueprints" className="py-16 md:py-24 bg-muted/30">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+        {/* Section Header */}
+        <div className="mb-12 md:mb-16">
+          <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-4">
+            Pricing Blueprint Collection
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
+            Ready-to-use pricing models for AI agents
+          </h2>
+          <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
+            <p className="text-muted-foreground">
+              Explore how real AI agents are priced across geographies, customer types, and pricing models.
+            </p>
+            <p className="text-muted-foreground">
+              Clone, compare, and adapt pricing logic — no guesswork.
+            </p>
           </div>
+        </div>
+
+        {/* Carousel - Blueprint Cards */}
+        <Carousel className="w-full">
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {blueprints.map((blueprint, index) => (
+              <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/4">
+                <BlueprintPreviewCard {...blueprint} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="flex gap-2 justify-center mt-8">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
+        </Carousel>
+
+        {/* CTA Button */}
+        <div className="flex justify-center mt-12">
+          <Button size="lg" onClick={() => setShowWaitlist(true)}>
+            Explore Pricing Blueprints
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+          <WaitlistDialog open={showWaitlist} onOpenChange={setShowWaitlist} />
         </div>
       </div>
     </section>

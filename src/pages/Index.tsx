@@ -40,14 +40,14 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="flex flex-col items-center gap-4">
             <div className="flex items-center gap-6 text-sm">
-              <Link 
-                to="/pricing-blueprints/research-agent" 
+              <Link
+                to="/pricing-blueprints/research-agent"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 Pricing Blueprints
               </Link>
               <a
-                href="https://www.linkedin.com/company/outlier-alpha-ventures/?viewAsMember=true"
+                href="https://www.linkedin.com/company/ask-scrooge/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
@@ -59,8 +59,8 @@ const Index = () => {
             <p className="text-sm text-muted-foreground text-center">
               © 2025 AskScrooge. Monetary Middleware for AI Work.
             </p>
-            <Link 
-              to="/auth" 
+            <Link
+              to="/auth"
               className="text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors"
             >
               Admin

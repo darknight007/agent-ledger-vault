@@ -788,17 +788,19 @@ export const PricingCalculator = ({ blueprint = "researcher-agent" }: PricingCal
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Gross Margin:</span>
-                      <div className="flex items-center gap-1">
-                        <span className="font-semibold text-accent">{calculations.displayMetrics.grossMargin}%</span>
+                      <span className="font-semibold text-accent">
+                        {calculations.displayMetrics.grossMargin}%
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Info className="h-3 w-3 text-muted-foreground cursor-help" />
+                            <sup className="ml-0.5 inline-block">
+                              <Info className="h-3 w-3 text-muted-foreground cursor-help" />
+                            </sup>
                           </TooltipTrigger>
                           <TooltipContent className="max-w-xs">
                             <p className="text-xs">{calculations.displayMetrics.marginCalculation}</p>
                           </TooltipContent>
                         </Tooltip>
-                      </div>
+                      </span>
                     </div>
                   </>
                 )}
@@ -846,17 +848,19 @@ export const PricingCalculator = ({ blueprint = "researcher-agent" }: PricingCal
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Month 6 MRR:</span>
-                  <div className="flex items-center gap-1">
-                    <span className="font-semibold">${Math.round(calculations.month6Revenue).toLocaleString()}</span>
+                  <span className="font-semibold">
+                    ${Math.round(calculations.month6Revenue).toLocaleString()}
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <Info className="h-3 w-3 text-muted-foreground cursor-help" />
+                        <sup className="ml-0.5 inline-block">
+                          <Info className="h-3 w-3 text-muted-foreground cursor-help" />
+                        </sup>
                       </TooltipTrigger>
                       <TooltipContent className="max-w-sm">
                         <p className="text-xs">{calculations.month6Calculation}</p>
                       </TooltipContent>
                     </Tooltip>
-                  </div>
+                  </span>
                 </div>
                 <p className="text-xs text-muted-foreground mt-2">
                   Based on {inputs.monthlyCustomers} customers @ ${calculations.arpu.toFixed(2)} ARPU
@@ -904,31 +908,35 @@ export const PricingCalculator = ({ blueprint = "researcher-agent" }: PricingCal
               <CardContent className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Breakeven customers:</span>
-                  <div className="flex items-center gap-1">
-                    <span className="font-semibold">{calculations.breakevenCustomers}</span>
+                  <span className="font-semibold">
+                    {calculations.breakevenCustomers}
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <Info className="h-3 w-3 text-muted-foreground cursor-help" />
+                        <sup className="ml-0.5 inline-block">
+                          <Info className="h-3 w-3 text-muted-foreground cursor-help" />
+                        </sup>
                       </TooltipTrigger>
                       <TooltipContent className="max-w-xs">
                         <p className="text-xs">{calculations.breakevenCalculation}</p>
                       </TooltipContent>
                     </Tooltip>
-                  </div>
+                  </span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Runway to $10K MRR:</span>
-                  <div className="flex items-center gap-1">
-                    <span className="font-semibold">{calculations.runwayMonths} months</span>
+                  <span className="font-semibold">
+                    {calculations.runwayMonths} months
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <Info className="h-3 w-3 text-muted-foreground cursor-help" />
+                        <sup className="ml-0.5 inline-block">
+                          <Info className="h-3 w-3 text-muted-foreground cursor-help" />
+                        </sup>
                       </TooltipTrigger>
                       <TooltipContent className="max-w-sm">
                         <p className="text-xs">{calculations.runwayCalculation}</p>
                       </TooltipContent>
                     </Tooltip>
-                  </div>
+                  </span>
                 </div>
                 <p className="text-xs text-muted-foreground">
                   Based on {assumptions.growthRate}% MoM growth, {assumptions.churnRate}% churn

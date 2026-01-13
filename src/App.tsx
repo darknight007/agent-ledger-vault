@@ -9,6 +9,7 @@ import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import ResearchAgentBlueprint from "./pages/ResearchAgentBlueprint";
 import SocialContentCreatorBlueprint from "./pages/SocialContentCreatorBlueprint";
+import CustomerSupportAgentBlueprint from "./pages/CustomerSupportAgentBlueprint";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
 
           <Route path="/pricing-blueprints/research-agent" element={<ResearchAgentBlueprint />} />
           <Route path="/pricing-blueprints/social-content-creator-agent" element={<SocialContentCreatorBlueprint />} />
+          <Route path="/pricing-blueprints/customer-support-agent" element={<CustomerSupportAgentBlueprint />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

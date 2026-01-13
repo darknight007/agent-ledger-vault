@@ -38,7 +38,7 @@ const blueprints: BlueprintCard[] = [
     pricingModels: "Per-resolution · Per-seat",
     unitOfValue: "1 ticket resolved = 1 unit",
     geography: "USD · GBP · EUR",
-    comingSoon: true,
+    link: "/pricing-blueprints/customer-support-agent",
   },
   {
     title: "AI SDR Agent",

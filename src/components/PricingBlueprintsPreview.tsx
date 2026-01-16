@@ -46,7 +46,7 @@ const blueprints: BlueprintCard[] = [
     pricingModels: "Per-lead · Per-meeting",
     unitOfValue: "1 qualified lead = 1 outcome",
     geography: "USD · EUR",
-    comingSoon: true,
+    link: "/pricing-blueprints/ai-sdr-agent",
   },
 ];
 

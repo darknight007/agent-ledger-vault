@@ -317,27 +317,27 @@ const CustomerSupportAgentBlueprint = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b border-border">
                   <span className="text-muted-foreground">🇺🇸 United States / Canada</span>
-                  <span className="font-semibold">$3,500–$5,000 / month</span>
+                  <span className="font-semibold">$3,000–$4,500 / month</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-border">
                   <span className="text-muted-foreground">🇪🇺 Europe / UK</span>
-                  <span className="font-semibold">$2,800–$4,200 / month</span>
+                  <span className="font-semibold">$2,200–$3,000 / month</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-border">
                   <span className="text-muted-foreground">🇮🇳 India</span>
-                  <span className="font-semibold">$600–$1,200 / month</span>
+                  <span className="font-semibold">$380–$550 / month</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-border">
                   <span className="text-muted-foreground">🇵🇭 Southeast Asia (Philippines, Vietnam)</span>
-                  <span className="font-semibold">$700–$1,400 / month</span>
+                  <span className="font-semibold">$400–$600 / month</span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-border">
                   <span className="text-muted-foreground">🌎 LATAM</span>
-                  <span className="font-semibold">$1,200–$2,200 / month</span>
+                  <span className="font-semibold">$700–$800 / month</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">🌍 Africa</span>
-                  <span className="font-semibold">$500–$1,000 / month</span>
+                  <span className="font-semibold">$300–$450 / month</span>
                 </div>
               </div>
               <p className="text-xs text-muted-foreground bg-muted p-4 rounded-lg mt-6">

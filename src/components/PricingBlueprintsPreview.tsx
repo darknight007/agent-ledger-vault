@@ -64,14 +64,9 @@ export const PricingBlueprintsPreview = () => {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
             Ready-to-use pricing models for AI agents
           </h2>
-          <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
-            <p className="text-muted-foreground">
-              Explore how real AI agents are priced across geographies, customer types, and pricing models.
-            </p>
-            <p className="text-muted-foreground">
-              Clone, compare, and adapt pricing logic — no guesswork.
-            </p>
-          </div>
+          <p className="text-muted-foreground max-w-2xl">
+            Explore how real AI agents are priced across geographies, customer types, and pricing models. Clone, compare, and adapt pricing logic — no guesswork.
+          </p>
         </div>
 
         {/* Carousel - Blueprint Cards */}

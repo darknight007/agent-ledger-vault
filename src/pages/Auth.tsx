@@ -47,15 +47,18 @@ export default function Auth() {
     try {
       const validated = authSchema.parse({ email, password });
       
-      const { error } = await supabase.auth.signUp({
-        email: validated.email,
+      const { error, data } = await supabase.auth.signUp({
+        email: validated.email.toLowerCase().trim(),
         password: validated.password,
         options: {
           emailRedirectTo: `${window.location.origin}/admin`,
         },
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error("Supabase signup error:", error);
+        throw error;
+      }
 
       toast({
         title: "Account created!",
@@ -65,6 +68,10 @@ export default function Auth() {
       // Switch to login tab after successful signup
       const loginTab = document.querySelector('[value="login"]') as HTMLElement;
       loginTab?.click();
+      
+      // Clear form
+      setEmail("");
+      setPassword("");
     } catch (error: any) {
       if (error instanceof z.ZodError) {
         toast({
@@ -73,6 +80,7 @@ export default function Auth() {
           variant: "destructive",
         });
       } else {
+        console.error("Signup error:", error);
         toast({
           title: "Signup failed",
           description: error.message || "An error occurred during signup",
@@ -91,12 +99,19 @@ export default function Auth() {
     try {
       const validated = authSchema.parse({ email, password });
       
-      const { error } = await supabase.auth.signInWithPassword({
-        email: validated.email,
+      const { error, data } = await supabase.auth.signInWithPassword({
+        email: validated.email.toLowerCase().trim(),
         password: validated.password,
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error("Supabase auth error:", error);
+        throw error;
+      }
+
+      if (!data.session) {
+        throw new Error("No session created after login");
+      }
 
       toast({
         title: "Welcome back!",
@@ -110,9 +125,10 @@ export default function Auth() {
           variant: "destructive",
         });
       } else {
+        console.error("Login error:", error);
         toast({
           title: "Login failed",
-          description: error.message || "Invalid email or password",
+          description: error.message || "Invalid email or password. Please check your credentials and try again.",
           variant: "destructive",
         });
       }

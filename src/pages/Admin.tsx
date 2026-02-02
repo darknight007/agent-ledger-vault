@@ -24,15 +24,21 @@ export default function Admin() {
 
   useEffect(() => {
     checkAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    navigate("/auth");
+  };
 
   const checkAuth = async () => {
     try {
       // Check if user is logged in
       const { data: { session } } = await supabase.auth.getSession();
-      
+
       if (!session) {
-        navigate("/auth");
+        navigate("/");
         return;
       }
 
@@ -41,27 +47,48 @@ export default function Admin() {
         .from("user_roles")
         .select("role")
         .eq("user_id", session.user.id)
-        .eq("role", "admin")
-        .single();
+        .eq("role", "admin");
 
-      if (roleError || !roleData) {
+      if (roleError) {
+        console.error("Role check error:", roleError);
+        toast({
+          title: "Error checking permissions",
+          description: roleError.message || "Failed to verify admin permissions",
+          variant: "destructive",
+        });
+        navigate("/");
+        return;
+      }
+
+      // Check if user has at least one admin role
+      if (!roleData || roleData.length === 0) {
         toast({
           title: "Access denied",
           description: "You don't have admin permissions. Please contact support.",
           variant: "destructive",
         });
-        await handleSignOut();
+        navigate("/");
         return;
       }
 
       setIsAdmin(true);
       await loadWaitlistData();
-    } catch (error: any) {
-      toast({
-        title: "Error",
-        description: error.message || "Failed to verify permissions",
-        variant: "destructive",
-      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("Auth check error:", error);
+        toast({
+          title: "Error",
+          description: error.message || "Failed to verify permissions",
+          variant: "destructive",
+        });
+      } else {
+        console.error("Auth check error:", error);
+        toast({
+          title: "Error",
+          description: "Failed to verify permissions",
+          variant: "destructive",
+        });
+      }
       navigate("/auth");
     } finally {
       setIsLoading(false);
@@ -75,21 +102,29 @@ export default function Admin() {
         .select("*")
         .order("created_at", { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error("Waitlist fetch error:", error);
+        throw error;
+      }
 
       setWaitlistData(data || []);
-    } catch (error: any) {
-      toast({
-        title: "Error loading data",
-        description: error.message || "Failed to load waitlist entries",
-        variant: "destructive",
-      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("Error loading waitlist data:", error);
+        toast({
+          title: "Error loading data",
+          description: error.message || "Failed to load waitlist entries",
+          variant: "destructive",
+        });
+      } else {
+        console.error("Error loading waitlist data:", error);
+        toast({
+          title: "Error loading data",
+          description: "Failed to load waitlist entries",
+          variant: "destructive",
+        });
+      }
     }
-  };
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    navigate("/auth");
   };
 
   if (isLoading) {

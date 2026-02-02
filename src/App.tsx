@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import Auth from "./pages/Auth";
+import SecureAdminLogin from "./pages/SecureAdminLogin";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import ResearchAgentBlueprint from "./pages/ResearchAgentBlueprint";
@@ -22,7 +22,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/secure-admin/:token" element={<SecureAdminLogin />} />
           <Route path="/admin" element={<Admin />} />
 
           <Route path="/pricing-blueprints/research-agent" element={<ResearchAgentBlueprint />} />

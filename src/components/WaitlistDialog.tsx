@@ -37,15 +37,18 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
       setIsSubmitting(true);
 
       // Insert into Supabase
-      const { error } = await supabase.from("waitlist").insert([
+      const { error, data } = await supabase.from("waitlist").insert([
         {
           name: validatedData.name,
           email: validatedData.email,
           phone: validatedData.phone || null,
         },
-      ]);
+      ]).select();
 
-      if (error) throw error;
+      if (error) {
+        console.error("Supabase insert error:", error);
+        throw error;
+      }
 
       toast({
         title: "Successfully joined waitlist!",
@@ -55,11 +58,18 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
       // Reset form and close dialog
       setFormData({ name: "", email: "", phone: "" });
       onOpenChange(false);
-    } catch (error) {
+    } catch (error: unknown) {
       if (error instanceof z.ZodError) {
         toast({
           title: "Validation Error",
           description: error.errors[0].message,
+          variant: "destructive",
+        });
+      } else if (error instanceof Error) {
+        console.error("Waitlist submission error:", error);
+        toast({
+          title: "Error",
+          description: error?.message || "Failed to join waitlist. Please try again.",
           variant: "destructive",
         });
       } else {

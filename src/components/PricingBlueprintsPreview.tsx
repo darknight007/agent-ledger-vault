@@ -175,7 +175,7 @@ const TechCostAnalyzerSection = () => {
 
     setIsSubmitting(true);
     try {
-      const { error } = await supabase
+      const { error, data } = await supabase
         .from("waitlist")
         .insert([
           {
@@ -184,9 +184,13 @@ const TechCostAnalyzerSection = () => {
             name: "Repository Submission",
             phone: null,
           },
-        ]);
+        ])
+        .select();
 
-      if (error) throw error;
+      if (error) {
+        console.error("Supabase insert error:", error);
+        throw error;
+      }
 
       toast({
         title: "Success!",
@@ -195,13 +199,22 @@ const TechCostAnalyzerSection = () => {
 
       setRepoLink("");
       setShowWaitlist(true);
-    } catch (error: any) {
-      console.error("Error saving repository link:", error);
-      toast({
-        title: "Error",
-        description: error.message || "Failed to submit repository link",
-        variant: "destructive",
-      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("Error saving repository link:", error);
+        toast({
+          title: "Error",
+          description: error.message || "Failed to submit repository link",
+          variant: "destructive",
+        });
+      } else {
+        console.error("Error saving repository link:", error);
+        toast({
+          title: "Error",
+          description: "Failed to submit repository link",
+          variant: "destructive",
+        });
+      }
       // Still open waitlist for better UX even if saving fails
       setShowWaitlist(true);
     } finally {

@@ -59,12 +59,6 @@ const Index = () => {
             <p className="text-sm text-muted-foreground text-center">
               © 2025 AskScrooge. Monetary Middleware for AI Work.
             </p>
-            <Link
-              to="/auth"
-              className="text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors"
-            >
-              Admin
-            </Link>
           </div>
         </div>
       </footer>

@@ -72,18 +72,25 @@ export default function Auth() {
       // Clear form
       setEmail("");
       setPassword("");
-    } catch (error: any) {
+    } catch (error: unknown) {
       if (error instanceof z.ZodError) {
         toast({
           title: "Validation error",
           description: error.errors[0].message,
           variant: "destructive",
         });
-      } else {
+      } else if (error instanceof Error) {
         console.error("Signup error:", error);
         toast({
           title: "Signup failed",
           description: error.message || "An error occurred during signup",
+          variant: "destructive",
+        });
+      } else {
+        console.error("Signup error:", error);
+        toast({
+          title: "Signup failed",
+          description: "An unexpected error occurred during signup",
           variant: "destructive",
         });
       }
@@ -117,18 +124,36 @@ export default function Auth() {
         title: "Welcome back!",
         description: "You've been signed in successfully.",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       if (error instanceof z.ZodError) {
         toast({
           title: "Validation error",
           description: error.errors[0].message,
           variant: "destructive",
         });
+      } else if (error instanceof Error) {
+        console.error("Login error:", error);
+        
+        // Provide more helpful error messages
+        let errorMessage = "Invalid email or password. Please check your credentials and try again.";
+        if (error.message.includes("Failed to fetch")) {
+          errorMessage = "Network connection error. Please check your internet connection and try again.";
+        } else if (error.message.includes("Invalid login")) {
+          errorMessage = "Invalid email or password.";
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+        
+        toast({
+          title: "Login failed",
+          description: errorMessage,
+          variant: "destructive",
+        });
       } else {
         console.error("Login error:", error);
         toast({
           title: "Login failed",
-          description: error.message || "Invalid email or password. Please check your credentials and try again.",
+          description: "An unexpected error occurred during login",
           variant: "destructive",
         });
       }

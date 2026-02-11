@@ -34,22 +34,34 @@ export const Hero = () => {
     setIsSubmitting(true);
     try {
       const utm = getUtmParams();
-      const { error } = await supabase.from("waitlist").insert([
-        {
-          name: "",
-          email: email.trim(),
-          ...utm,
-        },
-      ]);
+      const insertData = {
+        name: "",
+        email: email.trim(),
+        utm_source: utm.utm_source,
+        utm_medium: utm.utm_medium,
+        utm_campaign: utm.utm_campaign,
+        utm_content: utm.utm_content,
+        utm_term: utm.utm_term,
+      };
 
-      if (error) throw error;
+      console.log("Inserting inline waitlist data:", insertData);
+
+      const { error } = await supabase.from("waitlist").insert([insertData]);
+
+      if (error) {
+        console.error("Inline insert error:", error);
+        throw error;
+      }
+
+      console.log("Inline insert successful");
 
       toast({
         title: "You're in!",
         description: "Check your inbox — we'll be in touch soon.",
       });
       setEmail("");
-    } catch {
+    } catch (error: unknown) {
+      console.error("Inline signup error:", error);
       toast({
         title: "Something went wrong",
         description: "Please try again or use the full form below.",

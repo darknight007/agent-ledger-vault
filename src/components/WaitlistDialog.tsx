@@ -38,19 +38,32 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
 
       const utm = getUtmParams();
 
-      const { error } = await supabase.from("waitlist").insert([
-        {
-          name: validatedData.name,
-          email: validatedData.email,
-          phone: validatedData.phone || null,
-          ...utm,
-        },
-      ]).select();
+      const insertData = {
+        name: validatedData.name,
+        email: validatedData.email,
+        phone: validatedData.phone || null,
+        utm_source: utm.utm_source,
+        utm_medium: utm.utm_medium,
+        utm_campaign: utm.utm_campaign,
+        utm_content: utm.utm_content,
+        utm_term: utm.utm_term,
+      };
+
+      console.log("Inserting waitlist data:", insertData);
+
+      const { error, data } = await supabase.from("waitlist").insert([insertData]);
 
       if (error) {
         console.error("Supabase insert error:", error);
+        console.error("Error details:", {
+          message: error.message,
+          code: error.code,
+          details: error.details,
+        });
         throw error;
       }
+
+      console.log("Insert successful:", data);
 
       toast({
         title: "You're on the list!",

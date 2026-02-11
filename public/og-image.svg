@@ -1,0 +1,32 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f1729;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a2744;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ade80;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="60" y="520" width="120" height="4" rx="2" fill="url(#accent)" />
+  <text x="60" y="200" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="700" fill="#ffffff">
+    Stop guessing what
+  </text>
+  <text x="60" y="280" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="700" fill="#ffffff">
+    to charge for your
+  </text>
+  <text x="60" y="360" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="700" fill="url(#accent)">
+    AI agent.
+  </text>
+  <text x="60" y="430" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#94a3b8">
+    Pricing models, billing infra, and ROI dashboards.
+  </text>
+  <text x="60" y="550" font-family="Inter, Space Grotesk, system-ui, sans-serif" font-size="32" font-weight="600" fill="url(#accent)">
+    AskScrooge
+  </text>
+  <text x="1140" y="550" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#64748b" text-anchor="end">
+    askscrooge.com
+  </text>
+</svg>

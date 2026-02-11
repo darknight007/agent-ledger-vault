@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { WaitlistDialog } from "./WaitlistDialog";
 
 export const Navigation = () => {
@@ -10,9 +10,10 @@ export const Navigation = () => {
 
   const navItems = [
     { label: "Solution", href: "#solution" },
-    { label: "For AI Builders", href: "#builders" },
-    { label: "For AI Buyers", href: "#enterprises" },
-    { label: "Pricing", href: "#pricing" }
+    { label: "For Builders", href: "#builders" },
+    { label: "For Buyers", href: "#enterprises" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Blueprints", href: "#pricing-blueprints" },
   ];
 
   return (
@@ -35,7 +36,9 @@ export const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <Button size="sm" onClick={() => setShowWaitlist(true)}>Join Today</Button>
+            <Button size="sm" onClick={() => setShowWaitlist(true)}>
+              Get Early Access
+            </Button>
           </div>
 
           <button
@@ -60,7 +63,9 @@ export const Navigation = () => {
                   {item.label}
                 </a>
               ))}
-              <Button size="sm" className="w-full" onClick={() => setShowWaitlist(true)}>Join Today</Button>
+              <Button size="sm" className="w-full" onClick={() => setShowWaitlist(true)}>
+                Get Early Access
+              </Button>
             </div>
           </div>
         )}

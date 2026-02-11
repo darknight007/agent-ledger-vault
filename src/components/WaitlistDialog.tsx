@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { getUtmParams } from "@/lib/utm";
 import { z } from "zod";
 
 const waitlistSchema = z.object({
@@ -25,9 +26,8 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
-      // Validate form data
       const validatedData = waitlistSchema.parse({
         name: formData.name,
         email: formData.email,
@@ -36,12 +36,14 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
 
       setIsSubmitting(true);
 
-      // Insert into Supabase
-      const { error, data } = await supabase.from("waitlist").insert([
+      const utm = getUtmParams();
+
+      const { error } = await supabase.from("waitlist").insert([
         {
           name: validatedData.name,
           email: validatedData.email,
           phone: validatedData.phone || null,
+          ...utm,
         },
       ]).select();
 
@@ -51,11 +53,10 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
       }
 
       toast({
-        title: "Successfully joined waitlist!",
-        description: "We'll be in touch soon.",
+        title: "You're on the list!",
+        description: "We'll reach out with early access details soon.",
       });
 
-      // Reset form and close dialog
       setFormData({ name: "", email: "", phone: "" });
       onOpenChange(false);
     } catch (error: unknown) {
@@ -88,9 +89,9 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Join the Waitlist</DialogTitle>
+          <DialogTitle>Get Early Access</DialogTitle>
           <DialogDescription>
-            Be among the first to experience the future of AI economics.
+            Join 1,000 builders shaping the future of AI monetization. No credit card required.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -98,25 +99,25 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
             <Label htmlFor="name">Name *</Label>
             <Input
               id="name"
-              placeholder="John Doe"
+              placeholder="Jane Smith"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email *</Label>
+            <Label htmlFor="email">Work Email *</Label>
             <Input
               id="email"
               type="email"
-              placeholder="john@example.com"
+              placeholder="jane@company.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone">Phone</Label>
+            <Label htmlFor="phone">Phone (optional)</Label>
             <Input
               id="phone"
               type="tel"
@@ -126,8 +127,11 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
             />
           </div>
           <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? "Joining..." : "Join Waitlist"}
+            {isSubmitting ? "Joining..." : "Claim My Spot"}
           </Button>
+          <p className="text-xs text-center text-muted-foreground">
+            Free forever on the Builder plan. Upgrade anytime.
+          </p>
         </form>
       </DialogContent>
     </Dialog>

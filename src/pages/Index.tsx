@@ -9,6 +9,7 @@ import { DiagonalDivider } from "@/components/DiagonalDivider";
 import { ForEnterprises } from "@/components/ForEnterprises";
 import { Pricing } from "@/components/Pricing";
 import { FinalCTA } from "@/components/FinalCTA";
+import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 import { Link } from "react-router-dom";
 import { Linkedin } from "lucide-react";
 
@@ -36,6 +37,7 @@ const Index = () => {
         </section>
         <FinalCTA />
       </main>
+      <StickyMobileCTA />
       <footer className="py-8 px-4 border-t border-border">
         <div className="container mx-auto">
           <div className="flex flex-col items-center gap-4">

@@ -31,8 +31,11 @@
     <!-- Favicon removed -->
     <link rel="icon" href="data:," />
 
+    <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Critical fonts - loaded synchronously -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Structured Data -->
@@ -56,6 +59,7 @@
 
   <body>
     <div id="root"></div>
+    <!-- Main app script with defer for non-blocking load -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

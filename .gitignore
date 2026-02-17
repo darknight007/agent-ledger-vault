@@ -32,3 +32,16 @@ bun.lockb
 *.sln
 *.sw?
 .vercel
+
+# Kiro spec files and documentation
+.kiro/
+
+# Temporary documentation files (generated during development)
+GITHUB_COMMIT_SUMMARY_WAITLIST_FIX.md
+INTEGRATION_TESTING_SUMMARY.md
+OPENROUTER_INTEGRATION.md
+PRICING_COMPARISON_USAGE_GUIDE.md
+REALTIME_PRICING_FEATURE.md
+SEO_IMPLEMENTATION_SUMMARY.md
+TOKEN_COSTS_DISABLED.md
+UPDATED_MODELS_SUMMARY.md

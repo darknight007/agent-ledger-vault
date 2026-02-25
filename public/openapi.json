@@ -1,0 +1,136 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AskScrooge Discovery API",
+    "description": "Phase 1 machine-readable discovery contract for AskScrooge capabilities.",
+    "version": "1.0.0-phase1"
+  },
+  "servers": [
+    {
+      "url": "https://askscrooge.com"
+    }
+  ],
+  "paths": {
+    "/status.json": {
+      "get": {
+        "operationId": "getStatus",
+        "summary": "Service status and runtime discovery signals",
+        "responses": {
+          "200": {
+            "description": "Service status payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/scrooge-capabilities.json": {
+      "get": {
+        "operationId": "getCapabilities",
+        "summary": "Machine-readable capability registry",
+        "responses": {
+          "200": {
+            "description": "Capability metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/cost-analysis/run": {
+      "post": {
+        "operationId": "runCostAnalysis",
+        "summary": "Run cost analysis (planned endpoint)",
+        "x-release-stage": "planned",
+        "responses": {
+          "501": {
+            "description": "Not yet implemented in Phase 1"
+          }
+        }
+      }
+    },
+    "/v1/value-savings/estimate": {
+      "post": {
+        "operationId": "estimateValueSavings",
+        "summary": "Estimate value savings (planned endpoint)",
+        "x-release-stage": "planned",
+        "responses": {
+          "501": {
+            "description": "Not yet implemented in Phase 1"
+          }
+        }
+      }
+    },
+    "/v1/pricing/recommend": {
+      "post": {
+        "operationId": "recommendPricing",
+        "summary": "Generate pricing recommendation (planned endpoint)",
+        "x-release-stage": "planned",
+        "responses": {
+          "501": {
+            "description": "Not yet implemented in Phase 1"
+          }
+        }
+      }
+    },
+    "/v1/billing/configure": {
+      "post": {
+        "operationId": "configureBilling",
+        "summary": "Create billing configuration (planned endpoint)",
+        "x-release-stage": "planned",
+        "responses": {
+          "501": {
+            "description": "Not yet implemented in Phase 1"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ServiceStatus": {
+        "type": "object",
+        "required": [
+          "service",
+          "status",
+          "environment",
+          "discovery_phase"
+        ],
+        "properties": {
+          "service": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "operational",
+              "degraded",
+              "maintenance",
+              "outage"
+            ]
+          },
+          "environment": {
+            "type": "string"
+          },
+          "discovery_phase": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}

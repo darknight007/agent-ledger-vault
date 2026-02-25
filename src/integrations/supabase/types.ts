@@ -14,6 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      repository_submissions: {
+        Row: {
+          created_at: string
+          id: string
+          repo_link: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          repo_link: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          repo_link?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null

@@ -5,8 +5,7 @@ import { ArrowRight, Zap, Shield, TrendingUp } from "lucide-react";
 import { DashboardPreview } from "./DashboardPreview";
 import { WaitlistDialog } from "./WaitlistDialog";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { getUtmParams } from "@/lib/utm";
+import { addToWaitlist } from "@/lib/waitlist-service";
 import { z } from "zod";
 
 const emailSchema = z.string().trim().email("Enter a valid email");
@@ -33,27 +32,10 @@ export const Hero = () => {
 
     setIsSubmitting(true);
     try {
-      const utm = getUtmParams();
-      const insertData = {
+      await addToWaitlist({
         name: "",
         email: email.trim(),
-        utm_source: utm.utm_source,
-        utm_medium: utm.utm_medium,
-        utm_campaign: utm.utm_campaign,
-        utm_content: utm.utm_content,
-        utm_term: utm.utm_term,
-      };
-
-      console.log("Inserting inline waitlist data:", insertData);
-
-      const { error } = await supabase.from("waitlist").insert([insertData]);
-
-      if (error) {
-        console.error("Inline insert error:", error);
-        throw error;
-      }
-
-      console.log("Inline insert successful");
+      });
 
       toast({
         title: "You're in!",
@@ -62,9 +44,11 @@ export const Hero = () => {
       setEmail("");
     } catch (error: unknown) {
       console.error("Inline signup error:", error);
+      const description =
+        error instanceof Error ? error.message : "Please try again or use the full form below.";
       toast({
         title: "Something went wrong",
-        description: "Please try again or use the full form below.",
+        description,
         variant: "destructive",
       });
     } finally {

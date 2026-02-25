@@ -4,8 +4,7 @@ import { Input } from "@/components/ui/input";
 import { ArrowRight, Zap } from "lucide-react";
 import { WaitlistDialog } from "./WaitlistDialog";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { getUtmParams } from "@/lib/utm";
+import { addToWaitlist } from "@/lib/waitlist-service";
 import { z } from "zod";
 
 const emailSchema = z.string().trim().email("Enter a valid email");
@@ -32,22 +31,21 @@ export const FinalCTA = () => {
 
     setIsSubmitting(true);
     try {
-      const utm = getUtmParams();
-      const { error } = await supabase.from("waitlist").insert([
-        { name: "", email: email.trim(), ...utm },
-      ]);
-
-      if (error) throw error;
+      await addToWaitlist({
+        name: "",
+        email: email.trim(),
+      });
 
       toast({
         title: "You're in!",
         description: "We'll be in touch soon with early access.",
       });
       setEmail("");
-    } catch {
+    } catch (error: unknown) {
+      const description = error instanceof Error ? error.message : "Please try again.";
       toast({
         title: "Something went wrong",
-        description: "Please try again.",
+        description,
         variant: "destructive",
       });
     } finally {

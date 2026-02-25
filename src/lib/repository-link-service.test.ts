@@ -41,7 +41,7 @@ describe('saveRepositoryLink', () => {
       const link = 'https://github.com/user/repo';
       await saveRepositoryLink(link);
 
-      expect(mockFrom).toHaveBeenCalledWith('waitlist');
+      expect(mockFrom).toHaveBeenCalledWith('repository_submissions');
       expect(mockInsert).toHaveBeenCalledWith({ repo_link: link });
     });
 

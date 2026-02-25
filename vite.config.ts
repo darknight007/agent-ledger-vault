@@ -44,8 +44,6 @@ export default defineConfig({
           ui: ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu", "@radix-ui/react-popover"],
           // Utility chunks
           utils: ["zod", "date-fns", "clsx"],
-          // SEO library
-          seo: ["src/lib/seo"],
         },
       },
     },
@@ -64,17 +62,6 @@ export default defineConfig({
     chunkSizeWarningLimit: 500,
     // Report compressed size
     reportCompressedSize: true,
-    // Increase rollup output size limit
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ["react", "react-dom", "react-router-dom"],
-          ui: ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu", "@radix-ui/react-popover"],
-          utils: ["zod", "date-fns", "clsx"],
-          seo: ["src/lib/seo"],
-        },
-      },
-    },
   },
   // Optimize CSS handling
   css: {

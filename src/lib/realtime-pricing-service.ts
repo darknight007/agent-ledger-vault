@@ -137,31 +137,42 @@ async function fetchFromOpenRouter(): Promise<RealtimePricingData[]> {
  * OpenRouter returns models with pricing in cents per 1M tokens
  */
 function parseOpenRouterResponse(data: any): RealtimePricingData[] {
-  if (!data || !Array.isArray(data)) {
+  const rawModels = Array.isArray(data)
+    ? data
+    : Array.isArray(data?.data)
+      ? data.data
+      : Array.isArray(data?.models)
+        ? data.models
+        : null;
+
+  if (!rawModels) {
     throw new Error('Invalid OpenRouter response format');
   }
 
-  return data
+  return rawModels
     .filter((model: any) => {
-      // Filter out models without pricing info
-      return model.pricing && (model.pricing.prompt || model.pricing.completion);
+      // Filter out models without usable pricing info
+      return model?.pricing;
     })
     .map((model: any) => {
-      // OpenRouter pricing is in dollars per 1M tokens
-      const inputCost = parseFloat(model.pricing.prompt) || 0;
-      const outputCost = parseFloat(model.pricing.completion) || 0;
+      // OpenRouter can return prompt/completion or input/output keys.
+      const inputRaw = model.pricing.prompt ?? model.pricing.input ?? 0;
+      const outputRaw = model.pricing.completion ?? model.pricing.output ?? 0;
+      const inputCost = parseFloat(String(inputRaw)) || 0;
+      const outputCost = parseFloat(String(outputRaw)) || 0;
       const avgCost = (inputCost + outputCost) / 2;
 
       return {
-        model: model.id,
-        provider: extractProvider(model.id),
+        model: model.id ?? model.name ?? 'unknown/model',
+        provider: extractProvider(model.id ?? model.name ?? 'unknown/model'),
         inputCostPer1MTokens: inputCost,
         outputCostPer1MTokens: outputCost,
         costPer1MTokens: avgCost,
         lastUpdated: new Date(),
         source: 'OpenRouter API',
       };
-    });
+    })
+    .filter((model: RealtimePricingData) => model.inputCostPer1MTokens > 0 || model.outputCostPer1MTokens > 0);
 }
 
 /**

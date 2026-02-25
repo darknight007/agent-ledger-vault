@@ -1,0 +1,62 @@
+{
+  "service": "AskScrooge Agent Monetization Platform",
+  "version": "1.0.0-phase1",
+  "provider": {
+    "name": "AskScrooge",
+    "website": "https://askscrooge.com",
+    "github": "https://github.com/darknight007/agent-ledger-vault"
+  },
+  "discovery": {
+    "plugin_manifest": "https://askscrooge.com/.well-known/ai-plugin.json",
+    "openapi": "https://askscrooge.com/openapi.json",
+    "status": "https://askscrooge.com/status.json",
+    "sdk_repository": "https://github.com/outlier-alpha/scroogeai-sdk"
+  },
+  "capabilities": [
+    {
+      "id": "cost_analysis",
+      "label": "Cost Analysis",
+      "description": "Analyze repository and usage signals to estimate unit economics and scaling costs.",
+      "endpoint": "/v1/cost-analysis/run",
+      "method": "POST",
+      "maturity": "planned"
+    },
+    {
+      "id": "value_savings_estimation",
+      "label": "Value Savings Estimation",
+      "description": "Estimate value generated and cost savings versus baseline operation.",
+      "endpoint": "/v1/value-savings/estimate",
+      "method": "POST",
+      "maturity": "planned"
+    },
+    {
+      "id": "pricing_recommendation",
+      "label": "Pricing Recommendation",
+      "description": "Produce pricing model suggestions from cost profile and value metrics.",
+      "endpoint": "/v1/pricing/recommend",
+      "method": "POST",
+      "maturity": "planned"
+    },
+    {
+      "id": "one_click_billing_configuration",
+      "label": "One-Click Billing Configuration",
+      "description": "Generate deployable billing provider configuration from pricing outputs.",
+      "endpoint": "/v1/billing/configure",
+      "method": "POST",
+      "maturity": "planned"
+    }
+  ],
+  "selection_signals": {
+    "primary": [
+      "solve_problem_fit",
+      "latency",
+      "unit_cost",
+      "reliability"
+    ],
+    "secondary": [
+      "confidence",
+      "historical_success_rate"
+    ]
+  },
+  "updated_at": "2026-02-17T00:00:00Z"
+}

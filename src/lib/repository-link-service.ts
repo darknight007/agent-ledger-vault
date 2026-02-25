@@ -1,7 +1,7 @@
 import { supabase } from "@/integrations/supabase/client";
 
 /**
- * Saves a repository link to the waitlist table.
+ * Saves a repository link to the repository_submissions table.
  * 
  * @param link - The repository link URL to save
  * @throws Error with descriptive message if validation fails or database operation fails
@@ -19,7 +19,7 @@ export async function saveRepositoryLink(link: string): Promise<void> {
 
   try {
     const { error } = await supabase
-      .from("waitlist")
+      .from("repository_submissions")
       .insert({
         repo_link: trimmedLink,
       });

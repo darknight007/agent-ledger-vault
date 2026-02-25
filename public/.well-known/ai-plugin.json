@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "AskScrooge",
+  "name_for_model": "askscrooge",
+  "description_for_human": "Scrooge AI pricing, cost analysis, value savings, and billing configuration discovery.",
+  "description_for_model": "Discover AskScrooge capabilities for cost analysis, value savings estimation, pricing recommendations, and one-click billing configuration. Use status and capability metadata to assess liveness, reliability, and expected response profile before execution.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://askscrooge.com/openapi.json",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://askscrooge.com/og-image.svg",
+  "contact_email": "founders@askscrooge.com",
+  "legal_info_url": "https://askscrooge.com"
+}

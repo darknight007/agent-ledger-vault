@@ -1,0 +1,11 @@
+{
+  "service": "AskScrooge",
+  "status": "operational",
+  "environment": "production",
+  "discovery_phase": "phase1",
+  "capabilities_registry": "/.well-known/scrooge-capabilities.json",
+  "plugin_manifest": "/.well-known/ai-plugin.json",
+  "openapi": "/openapi.json",
+  "runtime_api_state": "planned",
+  "updated_at": "2026-02-17T00:00:00Z"
+}

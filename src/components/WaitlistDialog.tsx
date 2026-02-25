@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { getUtmParams } from "@/lib/utm";
+import { addToWaitlist } from "@/lib/waitlist-service";
 import { z } from "zod";
 
 const waitlistSchema = z.object({
@@ -36,34 +35,11 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
 
       setIsSubmitting(true);
 
-      const utm = getUtmParams();
-
-      const insertData = {
+      await addToWaitlist({
         name: validatedData.name,
         email: validatedData.email,
         phone: validatedData.phone || null,
-        utm_source: utm.utm_source,
-        utm_medium: utm.utm_medium,
-        utm_campaign: utm.utm_campaign,
-        utm_content: utm.utm_content,
-        utm_term: utm.utm_term,
-      };
-
-      console.log("Inserting waitlist data:", insertData);
-
-      const { error, data } = await supabase.from("waitlist").insert([insertData]);
-
-      if (error) {
-        console.error("Supabase insert error:", error);
-        console.error("Error details:", {
-          message: error.message,
-          code: error.code,
-          details: error.details,
-        });
-        throw error;
-      }
-
-      console.log("Insert successful:", data);
+      });
 
       toast({
         title: "You're on the list!",
@@ -83,13 +59,13 @@ export const WaitlistDialog = ({ open, onOpenChange }: WaitlistDialogProps) => {
         console.error("Waitlist submission error:", error);
         toast({
           title: "Error",
-          description: error?.message || "Failed to join waitlist. Please try again.",
+          description: error.message || "Failed to add to the waitlist. Please try again.",
           variant: "destructive",
         });
       } else {
         toast({
           title: "Error",
-          description: "Failed to join waitlist. Please try again.",
+          description: "Failed to add to the waitlist. Please try again.",
           variant: "destructive",
         });
       }
